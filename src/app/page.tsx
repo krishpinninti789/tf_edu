@@ -1,102 +1,372 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  BookOpen,
+  Brain,
+  Volume2,
+  ImageIcon,
+  Wifi,
+  Globe,
+  CheckCircle,
+  Play,
+  Users,
+  Award,
+  Smartphone,
+  Download,
+} from "lucide-react";
+import Link from "next/link";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="flex flex-col min-h-screen">
+      {/* Header */}
+      <header className="px-4 lg:px-6 h-16 flex items-center border-b">
+        <Link className="flex items-center justify-center" href="/">
+          <BookOpen className="h-6 w-6 mr-2" />
+          <span className="font-bold text-xl">EduLearn</span>
+        </Link>
+        <nav className="ml-auto flex gap-4 sm:gap-6">
+          <Link
+            className="text-sm font-medium hover:underline underline-offset-4"
+            href="#features"
+          >
+            Features
+          </Link>
+          <Link
+            className="text-sm font-medium hover:underline underline-offset-4"
+            href="#lessons"
+          >
+            Lessons
+          </Link>
+          <Link
+            className="text-sm font-medium hover:underline underline-offset-4"
+            href="#about"
+          >
+            About
+          </Link>
+        </nav>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-blue-50 to-indigo-100">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center space-y-4 text-center">
+              <div className="space-y-2">
+                <Badge variant="secondary" className="mb-4">
+                  <Wifi className="w-4 h-4 mr-1" />
+                  Works Offline
+                </Badge>
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+                  Learn Anywhere, Anytime
+                </h1>
+                <p className="mx-auto max-w-[700px] text-gray-600 md:text-xl">
+                  Interactive lessons with quizzes, audio support, and offline
+                  capabilities. Available in multiple languages for learners
+                  worldwide.
+                </p>
+              </div>
+              <div className="space-x-4">
+                <Button size="lg" className="bg-orange-600 hover:bg-orange-700">
+                  <Play className="mr-2 h-4 w-4" />
+                  Start Learning
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="bg-white text-gray-700 border-gray-300"
+                >
+                  Learn More
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section id="features" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                Powerful Learning Features
+              </h2>
+              <p className="mx-auto max-w-[700px] text-gray-600 md:text-xl mt-4">
+                Everything you need for an engaging and effective learning
+                experience
+              </p>
+            </div>
+            <div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
+              <Card className="border-2 hover:border-blue-200 transition-colors">
+                <CardHeader>
+                  <BookOpen className="h-10 w-10 text-blue-600 mb-2" />
+                  <CardTitle>Static Lessons</CardTitle>
+                  <CardDescription>
+                    Comprehensive lesson content that loads instantly and works
+                    offline
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      Rich text content
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      Fast loading
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      Offline access
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 hover:border-blue-200 transition-colors">
+                <CardHeader>
+                  <Brain className="h-10 w-10 text-purple-600 mb-2" />
+                  <CardTitle>Interactive Quizzes</CardTitle>
+                  <CardDescription>
+                    Test your knowledge with integrated quiz modules
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      Multiple choice questions
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      Instant feedback
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      Progress tracking
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 hover:border-blue-200 transition-colors">
+                <CardHeader>
+                  <div className="flex items-center space-x-2 mb-2">
+                    <Volume2 className="h-10 w-10 text-green-600" />
+                    <ImageIcon className="h-8 w-8 text-orange-600" />
+                  </div>
+                  <CardTitle>Rich Media Support</CardTitle>
+                  <CardDescription>
+                    Enhanced learning with audio narration and visual content
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      Audio narration
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      High-quality images
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      Visual learning aids
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* PWA & Offline Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
+          <div className="container px-4 md:px-6">
+            <div className="grid items-center gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]">
+              <div className="flex flex-col justify-center space-y-4">
+                <div className="space-y-2">
+                  <Badge variant="secondary" className="w-fit">
+                    <Smartphone className="w-4 h-4 mr-1" />
+                    Progressive Web App
+                  </Badge>
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                    Learn Without Limits
+                  </h2>
+                  <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    Our PWA technology ensures you can access your lessons
+                    anywhere, even without an internet connection. Install it on
+                    your device for a native app experience.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                  <Button className="bg-orange-600 hover:bg-orange-700">
+                    <Download className="mr-2 h-4 w-4" />
+                    Preview
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="bg-white text-gray-700 border-gray-300"
+                  >
+                    Learn More
+                  </Button>
+                </div>
+              </div>
+              <div className="mx-auto aspect-video overflow-hidden lg:min-h-[300px] min-h-[200px]  rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 lg:order-last flex items-center justify-center">
+                <div className="text-center space-y-4 ">
+                  <Wifi className="h-16 w-16 mx-auto text-blue-600" />
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-semibold">Offline Ready</h3>
+                    <p className="text-gray-600">
+                      Access lessons without internet
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Multi-language Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6">
+            <div className="grid items-center gap-6 lg:grid-cols-[500px_1fr] lg:gap-12 xl:grid-cols-[550px_1fr]">
+              <div className="mx-auto aspect-video overflow-hidden lg:min-h-[300px] min-h-[200px] rounded-xl bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center">
+                <div className="text-center space-y-4 ">
+                  <Globe className="h-16 w-16 mx-auto text-green-600" />
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-semibold">Global Access</h3>
+                    <p className="text-gray-600">
+                      Available in multiple languages
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col justify-center space-y-4">
+                <div className="space-y-2">
+                  <Badge variant="secondary" className="w-fit">
+                    <Globe className="w-4 h-4 mr-1" />
+                    Internationalization
+                  </Badge>
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                    Learn in Your Language
+                  </h2>
+                  <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    Break down language barriers with our comprehensive
+                    multi-language support. Switch between languages seamlessly
+                    and learn in the language you're most comfortable with.
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 gap-4 max-w-md">
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                    <span className="text-sm">English</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                    <span className="text-sm">Spanish</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                    <span className="text-sm">French</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                    <span className="text-sm">German</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-orange-600 text-white">
+          <div className="container px-4 md:px-6">
+            <div className="grid gap-6 lg:grid-cols-3 lg:gap-12 text-center">
+              <div className="space-y-2">
+                <Users className="h-12 w-12 mx-auto mb-4" />
+                <h3 className="text-3xl font-bold">10K+</h3>
+                <p className="text-blue-100">Active Learners</p>
+              </div>
+              <div className="space-y-2">
+                <BookOpen className="h-12 w-12 mx-auto mb-4" />
+                <h3 className="text-3xl font-bold">500+</h3>
+                <p className="text-blue-100">Lessons Available</p>
+              </div>
+              <div className="space-y-2">
+                <Award className="h-12 w-12 mx-auto mb-4" />
+                <h3 className="text-3xl font-bold">95%</h3>
+                <p className="text-blue-100">Completion Rate</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 border-t">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+                  Ready to Start Learning?
+                </h2>
+                <p className="mx-auto max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Join thousands of learners who are already advancing their
+                  skills with our interactive platform.
+                </p>
+              </div>
+              <div className="space-x-4">
+                <Button size="lg" className="bg-orange-600 hover:bg-orange-700">
+                  <Play className="mr-2 h-4 w-4" />
+                  Get Started
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="bg-white text-gray-700 border-gray-300"
+                >
+                  View Demo
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+        <p className="text-xs text-gray-500">
+          © 2024 EduLearn. All rights reserved.
+        </p>
+        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+          <Link
+            className="text-xs hover:underline underline-offset-4 text-gray-500"
+            href="#"
+          >
+            Terms of Service
+          </Link>
+          <Link
+            className="text-xs hover:underline underline-offset-4 text-gray-500"
+            href="#"
+          >
+            Privacy Policy
+          </Link>
+          <Link
+            className="text-xs hover:underline underline-offset-4 text-gray-500"
+            href="#"
+          >
+            Contact
+          </Link>
+        </nav>
       </footer>
     </div>
   );
