@@ -22,38 +22,12 @@ import {
   Download,
 } from "lucide-react";
 import Link from "next/link";
+import Header from "@/components/shared/Header";
+import Footer from "@/components/shared/Footer";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Header */}
-      <header className="px-4 lg:px-6 h-16 flex items-center border-b">
-        <Link className="flex items-center justify-center" href="/">
-          <BookOpen className="h-6 w-6 mr-2" />
-          <span className="font-bold text-xl">EduLearn</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#features"
-          >
-            Features
-          </Link>
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#lessons"
-          >
-            Lessons
-          </Link>
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#about"
-          >
-            About
-          </Link>
-        </nav>
-      </header>
-
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -74,7 +48,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Button size="lg" className="bg-orange-600 hover:bg-orange-700">
+                <Button size="lg" className="bg-green-600 hover:bg-green-700">
                   <Play className="mr-2 h-4 w-4" />
                   Start Learning
                 </Button>
@@ -208,7 +182,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button className="bg-orange-600 hover:bg-orange-700">
+                  <Button className="bg-green-600 hover:bg-green-700">
                     <Download className="mr-2 h-4 w-4" />
                     Preview
                   </Button>
@@ -289,7 +263,7 @@ export default function HomePage() {
         </section>
 
         {/* Stats Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-orange-600 text-white">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-green-600 text-white">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-3 lg:gap-12 text-center">
               <div className="space-y-2">
@@ -325,9 +299,9 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Button size="lg" className="bg-orange-600 hover:bg-orange-700">
+                <Button size="lg" className="bg-green-600 hover:bg-green-700">
                   <Play className="mr-2 h-4 w-4" />
-                  Get Started
+                  <Link href="/dashboard">Get Started</Link>
                 </Button>
                 <Button
                   variant="outline"
@@ -341,33 +315,6 @@ export default function HomePage() {
           </div>
         </section>
       </main>
-
-      {/* Footer */}
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-gray-500">
-          © 2024 EduLearn. All rights reserved.
-        </p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link
-            className="text-xs hover:underline underline-offset-4 text-gray-500"
-            href="#"
-          >
-            Terms of Service
-          </Link>
-          <Link
-            className="text-xs hover:underline underline-offset-4 text-gray-500"
-            href="#"
-          >
-            Privacy Policy
-          </Link>
-          <Link
-            className="text-xs hover:underline underline-offset-4 text-gray-500"
-            href="#"
-          >
-            Contact
-          </Link>
-        </nav>
-      </footer>
     </div>
   );
 }

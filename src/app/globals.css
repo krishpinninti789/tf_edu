@@ -120,3 +120,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.bgc-vprimary {
+  @apply bg-green-600;
+}
+
+.bgc-vsecondary {
+  @apply bg-green-700;
+}
