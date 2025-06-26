@@ -21,6 +21,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import Spinner from "@/components/shared/Spinner";
 
 export default function CoursePage() {
   const params = useParams();
@@ -28,15 +29,23 @@ export default function CoursePage() {
   const router = useRouter();
 
   const [course, setCourse] = useState<any>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!params?.id || course) return;
     const getDetails = async () => {
-      const res = await fetch(`/api/courses?id=${params.id}`, {
-        method: "GET",
-      });
-      const response = await res.json();
-      setCourse(response.courseData);
+      setLoading(true);
+      try {
+        const res = await fetch(`/api/courses?id=${params.id}`, {
+          method: "GET",
+        });
+        const response = await res.json();
+        setCourse(response.courseData);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
     };
     if (!course) getDetails();
   }, [params.id]);
@@ -101,6 +110,8 @@ export default function CoursePage() {
   const progressPercentage =
     (completedLessons.length / allLessons.length) * 100;
 
+  if (loading) return <Spinner />;
+
   if (!course) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -130,7 +141,7 @@ export default function CoursePage() {
               <ChevronLeft className="h-4 w-4 mr-2" />
               Back to Courses
             </Button>
-            <div className="flex items-center space-x-4">
+            {/* <div className="flex items-center space-x-4">
               <Button variant="outline" size="sm">
                 <Share2 className="h-4 w-4 mr-2" />
                 Share
@@ -139,7 +150,7 @@ export default function CoursePage() {
                 <Download className="h-4 w-4 mr-2" />
                 Resources
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -206,33 +217,45 @@ export default function CoursePage() {
             {/* Video Player */}
             <Card>
               <CardContent className="p-0">
-                <div className="relative aspect-video bg-black rounded-t-lg overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center text-white">
-                      <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        {isPlaying ? (
-                          <Pause className="h-8 w-8" />
-                        ) : (
-                          <Play className="h-8 w-8 ml-1" />
-                        )}
-                      </div>
-                      <p className="text-lg font-medium">
-                        {currentLesson?.title}
-                      </p>
-                      <p className="text-sm opacity-75">
-                        {currentLesson?.duration}
-                      </p>
-                    </div>
+                {currentLesson.videoUrl ? (
+                  <div className="relative w-full pb-[56.25%] self-center">
+                    <iframe
+                      className="absolute top-0 left-0 w-full h-full"
+                      src={currentLesson.videoUrl}
+                      allowFullScreen
+                    />
                   </div>
-                  <Button
-                    className="absolute inset-0 w-full h-full bg-transparent hover:bg-black/10"
-                    onClick={() => setIsPlaying(!isPlaying)}
-                  >
-                    <span className="sr-only">
-                      {isPlaying ? "Pause" : "Play"} video
-                    </span>
-                  </Button>
-                </div>
+                ) : (
+                  <div className="relative aspect-video bg-black rounded-t-lg overflow-hidden">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center text-white">
+                        <div className="w-20 h-20 z-1 bg-white/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                          {isPlaying ? (
+                            <Pause className="h-8 w-8" />
+                          ) : (
+                            <Play className="h-8 w-8 ml-1" />
+                          )}
+                        </div>
+
+                        <p className="text-lg font-medium">
+                          {currentLesson?.title}
+                        </p>
+                        <p className="text-sm opacity-75">
+                          {currentLesson?.duration}
+                        </p>
+                      </div>
+                    </div>
+                    <Button
+                      className="absolute inset-0 w-full h-full bg-transparent hover:bg-black/10"
+                      onClick={() => setIsPlaying(!isPlaying)}
+                    >
+                      <span className="sr-only">
+                        {isPlaying ? "Pause" : "Play"} video
+                      </span>
+                    </Button>
+                  </div>
+                )}
+
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <div>
