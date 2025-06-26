@@ -26,13 +26,13 @@ const Header = () => {
           </Link>
           <Link
             className="text-sm font-medium hover:underline underline-offset-4"
-            href="/dashboard"
+            href="/courses"
           >
             Lessons
           </Link>
           <Link
             className="text-sm font-medium hover:underline underline-offset-4"
-            href="#quizes"
+            href="/quizes"
           >
             Quizes
           </Link>

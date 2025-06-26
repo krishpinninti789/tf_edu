@@ -301,7 +301,7 @@ export default function HomePage() {
               <div className="space-x-4">
                 <Button size="lg" className="bg-green-600 hover:bg-green-700">
                   <Play className="mr-2 h-4 w-4" />
-                  <Link href="/dashboard">Get Started</Link>
+                  <Link href="/courses">Get Started</Link>
                 </Button>
                 <Button
                   variant="outline"
