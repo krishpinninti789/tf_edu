@@ -13,3 +13,15 @@ export async function getAllCourses() {
     return { success: false, message: "Failed to retrieve courses." };
   }
 }
+
+export async function getCourseById(id: any) {
+  try {
+    connectDB();
+    const course = await Course.findOne({ id: id }).lean();
+    // console.log(course);
+
+    return JSON.parse(JSON.stringify(course));
+  } catch (error) {
+    return { success: false, message: "Failed to get course data." };
+  }
+}
