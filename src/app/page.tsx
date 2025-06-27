@@ -48,7 +48,10 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Button size="lg" className="bg-green-600 hover:bg-green-700">
+                <Button
+                  size="lg"
+                  className="bg-vprimary hover:bg-vsecondary cursor-pointer"
+                >
                   <Play className="mr-2 h-4 w-4" />
                   Start Learning
                 </Button>
@@ -182,7 +185,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button className="bg-green-600 hover:bg-green-700">
+                  <Button className="bg-vprimary hover:bg-vsecondary">
                     <Download className="mr-2 h-4 w-4" />
                     Preview
                   </Button>
@@ -263,7 +266,7 @@ export default function HomePage() {
         </section>
 
         {/* Stats Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-green-600 text-white">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-vprimary text-white">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-3 lg:gap-12 text-center">
               <div className="space-y-2">
@@ -299,7 +302,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Button size="lg" className="bg-green-600 hover:bg-green-700">
+                <Button size="lg" className="bg-vprimary hover:bg-vsecondary">
                   <Play className="mr-2 h-4 w-4" />
                   <Link href="/courses">Get Started</Link>
                 </Button>

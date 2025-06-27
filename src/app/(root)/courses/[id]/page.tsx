@@ -22,6 +22,7 @@ import { Progress } from "@/components/ui/progress";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Spinner from "@/components/shared/Spinner";
+import VideoPlayer from "../../components/VideoPlayer";
 
 export default function CoursePage() {
   const params = useParams();
@@ -111,6 +112,8 @@ export default function CoursePage() {
     (completedLessons.length / allLessons.length) * 100;
 
   if (loading) return <Spinner />;
+
+  console.log(currentLesson.videoUrl);
 
   if (!course) {
     return (
@@ -217,13 +220,12 @@ export default function CoursePage() {
             {/* Video Player */}
             <Card>
               <CardContent className="p-0">
-                {currentLesson.videoUrl ? (
+                <div className="relative w-full h-50  pb-[56.25%] self-center">
+                  <VideoPlayer srcUrl={currentLesson.videoUrl} />
+                </div>
+                {/* {currentLesson.videoUrl ? (
                   <div className="relative w-full pb-[56.25%] self-center">
-                    <iframe
-                      className="absolute top-0 left-0 w-full h-full"
-                      src={currentLesson.videoUrl}
-                      allowFullScreen
-                    />
+                    <VideoPlayer id = {currentLesson.videoUrl}/>
                   </div>
                 ) : (
                   <div className="relative aspect-video bg-black rounded-t-lg overflow-hidden">
@@ -254,7 +256,7 @@ export default function CoursePage() {
                       </span>
                     </Button>
                   </div>
-                )}
+                )} */}
 
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">

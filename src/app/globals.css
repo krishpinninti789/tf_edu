@@ -99,7 +99,7 @@
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-3: oklch(67.58% 0.20731 41.13);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: oklch(0.205 0 0);
@@ -121,10 +121,8 @@
   }
 }
 
-.bgc-vprimary {
-  @apply bg-green-600;
-}
-
-.bgc-vsecondary {
-  @apply bg-green-700;
+@theme {
+  --color-vprimary: oklch(69.418% 0.19834 43.487);
+  --color-vsecondary: oklch(67.58% 0.20731 41.13);
+  --text-vprimary: oklch(69.418% 0.19834 43.487);
 }

@@ -1,5 +1,12 @@
+"use client";
+
+import { CldVideoPlayer } from "next-cloudinary";
+import "next-cloudinary/dist/cld-video-player.css";
+
 export default function Page() {
   return (
-    <iframe src="https://www.youtube.com/embed/19g66ezsKAg" allowFullScreen />
+    <>
+      <CldVideoPlayer width="1920" height="1080" src="4_mdnbm2" />
+    </>
   );
 }

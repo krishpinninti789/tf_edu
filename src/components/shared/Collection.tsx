@@ -93,10 +93,12 @@ const Collection = ({ courses, allCount }: Props) => {
                 )}
               </div>
               <div className="flex justify-between pt-4">
-                <Badge className="bg-green-100 text-green-800">100% Free</Badge>
+                <Badge className="bg-orange-100 text-orange-600">
+                  100% Free
+                </Badge>
                 <Button
                   size="sm"
-                  className="bg-green-600 hover:bg-green-700"
+                  className="bg-vprimary hover:bg-vsecondary cursor-pointer"
                   onClick={() => handleCourseStart(course.id)}
                 >
                   {course.progress > 0 ? "Continue" : "Start Course"}
