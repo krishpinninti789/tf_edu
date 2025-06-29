@@ -1,3 +1,5 @@
+//Course types
+
 export interface Lesson {
   id: number;
   title: string;
@@ -91,3 +93,55 @@ export type SearchProps = {
   selectedLevel: string;
   onLevelChange: (value: string) => void;
 };
+
+//Quiz types
+
+export interface QuizQuestion {
+  id: number;
+  type: "text" | "image";
+  question: string;
+  image?: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
+}
+
+export interface Quiz {
+  _id?: string;
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  questions: QuizQuestion[];
+  duration: string;
+  difficulty: "Easy" | "Medium" | "Hard";
+  category: string;
+  questionCount?: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+export interface QuizSummary {
+  _id?: string;
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  questionCount: number;
+  duration: string;
+  difficulty: "Easy" | "Medium" | "Hard";
+  category: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+export interface CreateQuizInput {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  questions: QuizQuestion[];
+  duration: string;
+  difficulty: "Easy" | "Medium" | "Hard";
+  category: string;
+}

@@ -2,8 +2,8 @@
 
 import { useState, useMemo } from "react";
 import { Course, CourseProps } from "@/types";
-import Filter from "@/components/shared/Filter";
-import Collection from "@/components/shared/Collection";
+import Filter from "@/app/(root)/components/Filter";
+import Collection from "@/app/(root)/components/CourseCollection";
 
 const CoursesPage = ({ courses }: CourseProps) => {
   const [searchTerm, setSearchTerm] = useState("");

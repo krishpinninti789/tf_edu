@@ -1,4 +1,3 @@
-// app/(yourRoute)/page.tsx or BasicEducationPage.tsx
 import { getAllCourses } from "@/lib/db/actions/course.actions";
 import CoursesPage from "../components/CoursesPage";
 

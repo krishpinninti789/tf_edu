@@ -13,6 +13,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
 import { BookOpen, Clock, Users, Star } from "lucide-react";
+import { CldImage } from "next-cloudinary";
 import Image from "next/image";
 
 type Props = {
@@ -41,7 +42,13 @@ const Collection = ({ courses, allCount }: Props) => {
               </Badge>
             )}
 
-            <div className="aspect-video bg-gradient-to-r from-green-400 to-blue-500 rounded-t-lg"></div>
+            <CldImage
+              width="500"
+              height="500"
+              src={course.image}
+              alt="Description of my image"
+              sizes="100vw"
+            />
 
             <CardHeader>
               <div className="flex justify-between items-start mb-2">
