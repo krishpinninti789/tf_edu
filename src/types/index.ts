@@ -96,9 +96,9 @@ export type SearchProps = {
 
 //Quiz types
 
-export interface QuizQuestion {
+export interface IQuizQuestion {
   id: number;
-  type: "text" | "image";
+  type: string;
   question: string;
   image?: string;
   options: string[];
@@ -106,28 +106,13 @@ export interface QuizQuestion {
   explanation: string;
 }
 
-export interface Quiz {
+export interface IQuiz {
   _id?: string;
   id: string;
   title: string;
   description: string;
   image: string;
-  questions: QuizQuestion[];
-  duration: string;
-  difficulty: "Easy" | "Medium" | "Hard";
-  category: string;
-  questionCount?: number;
-  createdAt?: Date;
-  updatedAt?: Date;
-}
-
-export interface QuizSummary {
-  _id?: string;
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  questionCount: number;
+  questions: IQuizQuestion[];
   duration: string;
   difficulty: "Easy" | "Medium" | "Hard";
   category: string;
@@ -135,13 +120,6 @@ export interface QuizSummary {
   updatedAt?: Date;
 }
 
-export interface CreateQuizInput {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  questions: QuizQuestion[];
-  duration: string;
-  difficulty: "Easy" | "Medium" | "Hard";
-  category: string;
+export interface QuizProps {
+  quizzes: IQuiz[];
 }

@@ -1,27 +1,5 @@
+import { IQuiz, IQuizQuestion } from "@/types";
 import mongoose, { type Document, Schema } from "mongoose";
-
-export interface IQuizQuestion {
-  id: number;
-  type: "text" | "image";
-  question: string;
-  image?: string;
-  options: string[];
-  correctAnswer: number;
-  explanation: string;
-}
-
-export interface IQuiz extends Document {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  questions: IQuizQuestion[];
-  duration: string;
-  difficulty: "Easy" | "Medium" | "Hard";
-  category: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
 
 const QuizQuestionSchema = new Schema<IQuizQuestion>({
   id: {
@@ -30,17 +8,13 @@ const QuizQuestionSchema = new Schema<IQuizQuestion>({
   },
   type: {
     type: String,
-    enum: ["text", "image"],
     required: true,
   },
   question: {
     type: String,
     required: true,
   },
-  image: {
-    type: String,
-    required: false,
-  },
+
   options: {
     type: [String],
     required: true,
@@ -124,14 +98,14 @@ QuizSchema.index({ difficulty: 1 });
 QuizSchema.index({ createdAt: -1 });
 
 // Virtual for question count
-QuizSchema.virtual("questionCount").get(function () {
-  return this.questions.length;
-});
+// QuizSchema.virtual("questionCount").get(function () {
+//   return this.questions.length;
+// });
 
 // Ensure virtual fields are serialized
-QuizSchema.set("toJSON", {
-  virtuals: true,
-});
+// QuizSchema.set("toJSON", {
+//   virtuals: true,
+// });
 
 const Quiz = mongoose.models.Quiz || mongoose.model<IQuiz>("Quiz", QuizSchema);
 
