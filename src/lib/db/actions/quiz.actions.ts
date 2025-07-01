@@ -1,17 +1,16 @@
 "use server";
 
-import Quiz from "@/lib/db/models/quiz.model";
-import type { IQuiz } from "@/types";
+import type { IQuizz } from "@/types";
 import connectDB from "../mongodb";
-import Course from "../models/course.model";
+import Quizz from "../models/quizz.model";
 
-export async function getAllQuizzes(): Promise<IQuiz[]> {
+export async function getAllQuizzes(): Promise<IQuizz[]> {
   try {
     await connectDB();
 
-    const quizzes = await Quiz.find().sort({ createdAt: -1 }).lean();
+    const quizzes = await Quizz.find({}).sort({ createdAt: -1 }).lean();
 
-    console.log(quizzes);
+    // console.log(quizzes);
 
     return JSON.parse(JSON.stringify(quizzes));
   } catch (error) {
@@ -20,11 +19,11 @@ export async function getAllQuizzes(): Promise<IQuiz[]> {
   }
 }
 
-export async function getQuizById(quizId: string): Promise<IQuiz | null> {
+export async function getQuizById(quizId: string): Promise<IQuizz | null> {
   try {
     await connectDB();
 
-    const quiz = await Quiz.findOne({ id: quizId }).lean();
+    const quiz = await Quizz.findOne({ id: quizId }).lean();
 
     if (!quiz) {
       return null;

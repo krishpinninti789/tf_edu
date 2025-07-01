@@ -1,4 +1,4 @@
-import { getAllQuizzes } from "@/lib/db/actions/quiz.actions";
+import { getAllQuizzes, getQuizById } from "@/lib/db/actions/quiz.actions";
 import QuizzesPage from "../components/QuizzesPage";
 
 const AllQuizzesMainPage = async () => {

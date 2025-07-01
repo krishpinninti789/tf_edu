@@ -1,19 +1,19 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import type { QuizProps } from "@/types";
 
 import QuizCollection from "@/app/(root)/components/QuizCollection";
 import QuizFilter from "./QuizFilter";
+import { QuizProps } from "@/types";
 
-const QuizzesPage = ({ quizzes }: QuizProps) => {
+const QuizzesPage = ({ quizzes }: any) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [selectedDifficulty, setSelectedDifficulty] =
     useState("All Difficulties");
 
   const filteredQuizzes = useMemo(() => {
-    return quizzes.filter((quiz) => {
+    return quizzes.filter((quiz: QuizProps) => {
       const matchesSearch =
         quiz.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         quiz.description.toLowerCase().includes(searchTerm.toLowerCase()) ||

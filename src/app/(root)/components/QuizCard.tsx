@@ -1,6 +1,6 @@
 "use client";
 
-import type { IQuiz } from "@/types";
+import type { IQuizz } from "@/types";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 interface QuizCardProps {
-  quiz: IQuiz;
+  quiz: IQuizz;
 }
 
 const QuizCard = ({ quiz }: QuizCardProps) => {
@@ -65,7 +65,7 @@ const QuizCard = ({ quiz }: QuizCardProps) => {
       </div>
 
       <CardHeader className="pb-3">
-        <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+        <h3 className="text-xl font-bold text-gray-900 group-hover:text-vprimary transition-colors line-clamp-2">
           {quiz.title}
         </h3>
         <p className="text-gray-600 text-sm line-clamp-2 leading-relaxed">
@@ -93,8 +93,8 @@ const QuizCard = ({ quiz }: QuizCardProps) => {
           </div>
         </div>
 
-        <Link href={`/quiz/${quiz.id}`} className="block">
-          <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-2.5 transition-all duration-200">
+        <Link href={`/quizes/${quiz.id}`} className="block">
+          <Button className="w-full cursor-pointer bg-vprimary hover:bg-vsecondary text-white font-medium py-2.5 transition-all duration-200">
             Start Quiz
           </Button>
         </Link>

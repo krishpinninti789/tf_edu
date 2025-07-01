@@ -96,30 +96,38 @@ export type SearchProps = {
 
 //Quiz types
 
-export interface IQuizQuestion {
+export interface IQuizzQuestion {
   id: number;
   type: string;
   question: string;
-  image?: string;
   options: string[];
   correctAnswer: number;
   explanation: string;
 }
 
-export interface IQuiz {
-  _id?: string;
+// Interface for the quiz
+export interface IQuizz extends Document {
   id: string;
   title: string;
   description: string;
   image: string;
-  questions: IQuizQuestion[];
   duration: string;
   difficulty: "Easy" | "Medium" | "Hard";
   category: string;
+  questions: IQuizzQuestion[];
   createdAt?: Date;
   updatedAt?: Date;
 }
 
 export interface QuizProps {
-  quizzes: IQuiz[];
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  duration: string;
+  difficulty: "Easy" | "Medium" | "Hard";
+  category: string;
+  questions: IQuizzQuestion[];
+  createdAt?: Date;
+  updatedAt?: Date;
 }

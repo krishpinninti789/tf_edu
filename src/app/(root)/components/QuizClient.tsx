@@ -15,10 +15,10 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import type { IQuiz } from "@/types";
+import type { IQuizz } from "@/types";
 
 interface QuizClientProps {
-  quiz: IQuiz;
+  quiz: IQuizz;
 }
 
 export function QuizClient({ quiz }: QuizClientProps) {
@@ -150,7 +150,7 @@ export function QuizClient({ quiz }: QuizClientProps) {
             <CardContent className="text-center">
               <Button
                 onClick={() => setQuizStarted(true)}
-                className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-lg"
+                className="bg-vprimary hover:bg-vsecondary cursor-pointer text-white px-8 py-3 text-lg"
               >
                 Start Quiz
               </Button>
@@ -173,7 +173,7 @@ export function QuizClient({ quiz }: QuizClientProps) {
               <CardTitle className="text-3xl font-bold text-gray-900 mb-4">
                 Quiz Complete!
               </CardTitle>
-              <div className="text-6xl font-bold text-purple-600 mb-2">
+              <div className="text-6xl font-bold text-vprimary mb-2">
                 {percentage}%
               </div>
               <p className="text-xl text-gray-600">
@@ -186,13 +186,13 @@ export function QuizClient({ quiz }: QuizClientProps) {
                 <Button
                   onClick={resetQuiz}
                   variant="outline"
-                  className="flex items-center gap-2 bg-transparent"
+                  className="flex items-center gap-2 bg-transparent cursor-pointer"
                 >
                   <RotateCcw className="w-4 h-4" />
                   Retake Quiz
                 </Button>
-                <Link href="/quiz">
-                  <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+                <Link href="/quizes">
+                  <Button className="bg-vprimary hover:bg-vsecondary text-white cursor-pointer">
                     Back to Quizzes
                   </Button>
                 </Link>
@@ -232,7 +232,7 @@ export function QuizClient({ quiz }: QuizClientProps) {
                           )}
                         </div>
 
-                        {question.image && question.type === "image" && (
+                        {/* {question.image && question.type === "image" && (
                           <div className="mb-4">
                             <Image
                               src={question.image || "/placeholder.svg"}
@@ -242,7 +242,7 @@ export function QuizClient({ quiz }: QuizClientProps) {
                               className="rounded-lg border"
                             />
                           </div>
-                        )}
+                        )} */}
 
                         <div className="space-y-2 mb-3">
                           {question.options.map((option, optionIndex) => (
@@ -332,7 +332,7 @@ export function QuizClient({ quiz }: QuizClientProps) {
                 <ImageIcon className="w-5 h-5 text-blue-500" />
               )}
             </div>
-            {currentQ.image && currentQ.type === "image" && (
+            {/* {currentQ.image && currentQ.type === "image" && (
               <div className="mt-4">
                 <Image
                   src={currentQ.image || "/placeholder.svg"}
@@ -342,7 +342,7 @@ export function QuizClient({ quiz }: QuizClientProps) {
                   className="rounded-lg border w-full max-w-md mx-auto"
                 />
               </div>
-            )}
+            )} */}
           </CardHeader>
           <CardContent className="space-y-4">
             {currentQ.options.map((option, index) => (
@@ -351,7 +351,7 @@ export function QuizClient({ quiz }: QuizClientProps) {
                 onClick={() => handleAnswerSelect(index)}
                 className={`w-full p-4 text-left rounded-lg border-2 transition-all ${
                   selectedAnswers[currentQuestion] === index
-                    ? "border-purple-500 bg-purple-50 text-purple-900"
+                    ? "border-vprimary bg-orange-50 text-vsecondary"
                     : "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
                 }`}
               >
@@ -359,7 +359,7 @@ export function QuizClient({ quiz }: QuizClientProps) {
                   <div
                     className={`w-4 h-4 rounded-full border-2 ${
                       selectedAnswers[currentQuestion] === index
-                        ? "border-purple-500 bg-purple-500"
+                        ? "border-vprimary bg-vprimary"
                         : "border-gray-300"
                     }`}
                   >
@@ -377,13 +377,14 @@ export function QuizClient({ quiz }: QuizClientProps) {
                 onClick={handlePrevious}
                 disabled={currentQuestion === 0}
                 variant="outline"
+                className="cursor-pointer"
               >
                 Previous
               </Button>
               <Button
                 onClick={handleNext}
                 disabled={selectedAnswers[currentQuestion] === undefined}
-                className="bg-purple-600 hover:bg-purple-700 text-white"
+                className="bg-vprimary hover:bg-vsecondary text-white cursor-pointer"
               >
                 {currentQuestion === quiz.questions.length - 1
                   ? "Finish Quiz"

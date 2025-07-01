@@ -1,10 +1,10 @@
 "use client";
 
-import type { IQuiz } from "@/types";
+import { IQuizz } from "@/types";
 import QuizCard from "./QuizCard";
 
 interface QuizCollectionProps {
-  quizzes: IQuiz[];
+  quizzes: IQuizz[];
   allCount: number;
 }
 
