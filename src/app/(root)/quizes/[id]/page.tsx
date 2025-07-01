@@ -10,8 +10,8 @@ interface QuizPageProps {
 }
 
 export default async function QuizPage({ params }: QuizPageProps) {
-  const resolvedParams = await params.id;
-  const quiz = await getQuizById(resolvedParams);
+  const resolvedParams = await params;
+  const quiz = await getQuizById(resolvedParams.id);
 
   if (!quiz) {
     notFound();
