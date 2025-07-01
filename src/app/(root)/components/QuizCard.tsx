@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Clock, Trophy, BookOpen, Calendar } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 
 interface QuizCardProps {
   quiz: IQuizz;
@@ -38,13 +39,23 @@ const QuizCard = ({ quiz }: QuizCardProps) => {
   return (
     <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md bg-white overflow-hidden">
       <div className="relative">
-        <Image
+        {/* <Image
           src={quiz.image || "/placeholder.svg?height=200&width=300"}
           alt={quiz.title}
           width={300}
           height={200}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+        /> */}
+
+        <CldImage
+          width="300"
+          height="200"
+          src={quiz.image}
+          alt="Description of my image"
+          sizes="100vw"
+          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
+
         <div className="absolute top-3 left-3">
           <Badge
             variant="secondary"

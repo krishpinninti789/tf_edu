@@ -16,6 +16,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import type { IQuizz } from "@/types";
+import { CldImage } from "next-cloudinary";
 
 interface QuizClientProps {
   quiz: IQuizz;
@@ -109,12 +110,20 @@ export function QuizClient({ quiz }: QuizClientProps) {
         <div className="max-w-2xl mx-auto">
           <Card className="bg-white shadow-xl">
             <div className="relative">
-              <Image
+              {/* <Image
                 src={quiz.image || "/placeholder.svg?height=300&width=600"}
                 alt={quiz.title}
                 width={600}
                 height={300}
                 className="w-full h-64 object-cover rounded-t-lg"
+              /> */}
+              <CldImage
+                width="300"
+                height="200"
+                src={quiz.image}
+                alt="Description of my image"
+                sizes="100vw"
+                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute top-4 right-4">
                 <Badge
